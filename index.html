@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú | Guarumo Cafetería</title>
-    <meta name="description" content="Menú oficial de Guarumo Cafetería. Cafés de especialidad, bebidas refrescantes y repostería artesanal en un ambiente natural.">
-    
+    <meta name="description"
+        content="Menú oficial de Guarumo Cafetería. Cafés de especialidad, bebidas refrescantes y repostería artesanal.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
-            /* Color System */
-            --color-primary: #2E5D38;        /* Deep Forest Green */
-            --color-primary-light: #5C8D66;  /* Primary Light */
-            --color-secondary: #8B5A2B;      /* Warm Wood Brown */
-            --color-bg: #FAF9F6;             /* Cream/Off-white */
-            --color-text: #1A3320;           /* Text Main */
-            --color-accent: #D4E157;         /* Accent */
-            
-            /* Glassmorphism */
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-            
-            /* Spacing & Layout */
-            --container-width: 1200px;
-            --header-height: 80px;
+            /* Exact Palette from Reference */
+            --bg-color: #FAF9F6;
+            --primary-color: #2E5D38;
+            --primary-light: #F0FDF4;
+            /* For pills */
+            --text-main: #1A3320;
+            --text-secondary: #525252;
+            --accent-color: #8B5A2B;
+            --border-color: rgba(46, 93, 56, 0.1);
+
+            /* Spacing */
+            --container-width: 800px;
+            /* More focused reading width */
+            --card-radius: 16px;
+            --pill-radius: 20px;
         }
 
         * {
@@ -38,415 +41,536 @@
         }
 
         body {
-            background-color: var(--color-bg);
-            color: var(--color-text);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(at 10% 10%, rgba(46, 93, 56, 0.05) 0px, transparent 50%),
-                radial-gradient(at 90% 90%, rgba(139, 90, 43, 0.05) 0px, transparent 50%);
-            background-attachment: fixed;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3 {
             font-family: 'Playfair Display', serif;
-            color: var(--color-primary);
+            color: var(--primary-color);
         }
 
         /* --- Header --- */
         header {
             text-align: center;
-            padding: 3rem 1rem 2rem;
-            margin-bottom: 2rem;
-            position: relative;
+            padding: 3rem 1.5rem 2rem;
+            margin-bottom: 1rem;
         }
 
         .logo {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            color: var(--color-primary);
             margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
 
         .tagline {
-            font-size: 1.1rem;
-            color: var(--color-secondary);
+            font-size: 1rem;
+            color: var(--text-secondary);
             font-style: italic;
-            font-weight: 400;
         }
 
         /* --- Container --- */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
-            padding: 0 1.5rem;
-            display: grid;
-            gap: 2rem;
+            padding: 0 1.5rem 4rem;
         }
 
-        @media (min-width: 768px) {
-            .container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .container {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        /* --- Category Styles --- */
+        .category-section {
+            margin-bottom: 3.5rem;
         }
 
-        /* --- Menu Sections --- */
-        .menu-category {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 24px;
-            padding: 2rem;
-            box-shadow: var(--glass-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.75rem;
         }
 
-        .menu-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px 0 rgba(46, 93, 56, 0.1);
+        .category-icon {
+            font-size: 1.8rem;
         }
 
         .category-title {
             font-size: 1.8rem;
-            color: var(--color-secondary);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--color-primary-light);
-            padding-bottom: 0.5rem;
-            display: inline-block;
+            font-weight: 700;
         }
 
-        .menu-items {
-            list-style: none;
+        /* --- Menu List Style (Default) --- */
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding: 0 0.5rem;
         }
 
         .menu-item {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px dashed rgba(46, 93, 56, 0.2);
-            transition: background-color 0.2s ease;
+            align-items: center;
+            padding: 0.5rem 0;
+            /* Minimal vertical padding */
         }
 
-        .menu-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .item-details {
-            display: flex;
-            flex-direction: column;
+        .item-info {
+            flex: 1;
+            padding-right: 1rem;
         }
 
         .item-name {
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 1.05rem;
-            color: var(--color-text);
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
         }
 
         .item-desc {
-            font-size: 0.85rem;
-            color: #555;
-            margin-top: 0.2rem;
-            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
         }
 
         .item-price {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
             font-weight: 700;
-            color: var(--color-primary);
+            font-size: 0.95rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: var(--pill-radius);
             white-space: nowrap;
-            margin-left: 1rem;
-            font-family: 'Inter', sans-serif;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
 
-        .price-variant {
-            display: block;
+        .price-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.4rem;
+        }
+
+        .price-group .item-price {
             font-size: 0.85rem;
-            color: #666;
-            font-weight: 400;
-            margin-top: 0.2rem;
+            padding: 0.3rem 0.7rem;
+        }
+
+        /* --- Grid Style (Filtrados/Otras) --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .menu-card {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: var(--card-radius);
+            padding: 1.5rem 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            transition: transform 0.2s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            background-color: #f0f0f0;
+            /* Placeholder color */
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            /* Pushes price to bottom */
         }
 
         /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 4rem 1rem 2rem;
-            margin-top: 2rem;
-            color: var(--color-primary);
+            padding: 2rem;
+            color: var(--primary-color);
             font-size: 0.9rem;
+            opacity: 0.8;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
         }
 
-        footer p {
-            opacity: 0.8;
-        }
-        
-        /* --- Responsive Tweaks --- */
+        /* --- Responsive --- */
         @media (max-width: 600px) {
+            .container {
+                padding: 0 1rem 3rem;
+            }
+
             .logo {
                 font-size: 2.5rem;
             }
-            .menu-category {
-                padding: 1.5rem;
+
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+                /* 2 columns on mobile for grid items */
+                gap: 0.75rem;
             }
-            .category-title {
-                font-size: 1.5rem;
+
+            .menu-card {
+                padding: 1rem;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .item-price {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
+
 <body>
 
     <header>
         <h1 class="logo">Guarumo</h1>
-        <p class="tagline">Cafetería de Especialidad</p>
+        <p class="tagline">Menú Digital</p>
     </header>
 
     <main class="container">
-        
+
         <!-- 1. Cafés Calientes -->
-        <section class="menu-category">
-            <h2 class="category-title">Cafés Calientes</h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">Espresso</span>
+        <section class="category-section">
+            <div class="category-header">
+                <span class="category-icon">☕</span>
+                <h2 class="category-title">Cafés Calientes</h2>
+            </div>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Espresso</h3>
+                    </div>
                     <span class="item-price">₡800</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Espresso Doble</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Espresso Doble</h3>
+                    </div>
                     <span class="item-price">₡1000</span>
-                </li>
-                <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Café Negro</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Café Negro</h3>
                     </div>
-                    <div class="item-price">
-                        <span>Peq: ₡1100</span>
-                        <br>
-                        <span>Gde: ₡1400</span>
+                    <div class="price-group">
+                        <span class="item-price">Peq: ₡1100</span>
+                        <span class="item-price">Gde: ₡1400</span>
                     </div>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Cortado</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Cortado</h3>
+                    </div>
                     <span class="item-price">₡1300</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Latte</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Latte</h3>
+                    </div>
                     <span class="item-price">₡1800</span>
-                </li>
-                <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Cappuccino</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Cappuccino</h3>
                     </div>
-                     <div class="item-price">
-                        <span>Peq: ₡1400</span>
-                        <br>
-                        <span>Gde: ₡2200</span>
+                    <div class="price-group">
+                        <span class="item-price">Peq: ₡1400</span>
+                        <span class="item-price">Gde: ₡2200</span>
                     </div>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Flat White</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Flat White</h3>
+                    </div>
                     <span class="item-price">₡2000</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Moka</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Moka</h3>
+                    </div>
                     <span class="item-price">₡2300</span>
-                </li>
-            </ul>
+                </div>
+            </div>
         </section>
 
         <!-- 2. Cafés Fríos -->
-        <section class="menu-category">
-            <h2 class="category-title">Cafés Fríos</h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">Latte Frío Clásico</span>
+        <section class="category-section">
+            <div class="category-header">
+                <span class="category-icon">❄️</span>
+                <h2 class="category-title">Cafés Fríos</h2>
+            </div>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Latte Frío Clásico</h3>
+                    </div>
                     <span class="item-price">₡2300</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Latte Frío Caramelo</span>
-                    <span class="item-price">₡2500</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Moka Frío</span>
-                    <span class="item-price">₡2500</span>
-                </li>
-                <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Naranja Espresso</span>
-                        <span class="item-desc">Dos espressos, hielo y jugo de naranja natural</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Latte Frío Caramelo</h3>
                     </div>
                     <span class="item-price">₡2500</span>
-                </li>
-            </ul>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Moka Frío</h3>
+                    </div>
+                    <span class="item-price">₡2500</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Naranja Espresso</h3>
+                        <p class="item-desc">Dos espressos, hielo y jugo de naranja natural</p>
+                    </div>
+                    <span class="item-price">₡2500</span>
+                </div>
+            </div>
         </section>
 
-        <!-- 3. Filtrados (Métodos) -->
-        <section class="menu-category">
-            <h2 class="category-title">Filtrados</h2>
-            <ul class="menu-items">
-                <li style="margin-bottom: 1rem; color: var(--color-primary); font-weight: 600; text-align: right;">₡1800 c/u</li>
-                <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">V60</span>
-                        <span class="item-desc">Más aromático, brillante</span>
-                    </div>
-                </li>
-                <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Vandola</span>
-                        <span class="item-desc">Redondo, dulce, suave</span>
-                    </div>
-                </li>
-                <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Aero Press</span>
-                        <span class="item-desc">Dulce, achocolatado o intenso</span>
-                    </div>
-                </li>
-                 <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Origami</span>
-                        <span class="item-desc">Dulce, aromático, balanceado</span>
-                    </div>
-                </li>
-                <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Moka Italiana</span>
-                        <span class="item-desc">Achocolatado, nueces</span>
-                    </div>
-                </li>
-                 <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Chemex</span>
-                        <span class="item-desc">Limpio, delicado</span>
-                    </div>
-                </li>
-            </ul>
+        <!-- 3. Filtrados (Métodos) - Grid Layout -->
+        <section class="category-section">
+            <div class="category-header">
+                <span class="category-icon">⚗️</span>
+                <h2 class="category-title">Métodos de Filtrado</h2>
+            </div>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary); text-align: center;">Selecciona tu método
+                favorito • <strong>₡1800 c/u</strong></p>
+
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <!-- Placeholder Img -->
+                    <img src="https://placehold.co/400x400/faf9f6/2e5d38?text=V60" alt="V60" class="card-image">
+                    <h3 class="card-title">V60</h3>
+                    <p class="card-desc">Más aromático, brillante</p>
+                    <span class="item-price">₡1800</span>
+                </div>
+                <div class="menu-card">
+                    <img src="https://placehold.co/400x400/faf9f6/2e5d38?text=Vandola" alt="Vandola" class="card-image">
+                    <h3 class="card-title">Vandola</h3>
+                    <p class="card-desc">Redondo, dulce, suave</p>
+                    <span class="item-price">₡1800</span>
+                </div>
+                <div class="menu-card">
+                    <img src="https://placehold.co/400x400/faf9f6/2e5d38?text=Aero+Press" alt="Aero Press"
+                        class="card-image">
+                    <h3 class="card-title">Aero Press</h3>
+                    <p class="card-desc">Dulce, achocolatado o intenso</p>
+                    <span class="item-price">₡1800</span>
+                </div>
+                <div class="menu-card">
+                    <img src="https://placehold.co/400x400/faf9f6/2e5d38?text=Origami" alt="Origami" class="card-image">
+                    <h3 class="card-title">Origami</h3>
+                    <p class="card-desc">Dulce, aromático, balanceado</p>
+                    <span class="item-price">₡1800</span>
+                </div>
+                <div class="menu-card">
+                    <img src="https://placehold.co/400x400/faf9f6/2e5d38?text=Moka+Italiana" alt="Moka Italiana"
+                        class="card-image">
+                    <h3 class="card-title">Moka Italiana</h3>
+                    <p class="card-desc">Achocolatado, nueces</p>
+                    <span class="item-price">₡1800</span>
+                </div>
+                <div class="menu-card">
+                    <img src="https://placehold.co/400x400/faf9f6/2e5d38?text=Chemex" alt="Chemex" class="card-image">
+                    <h3 class="card-title">Chemex</h3>
+                    <p class="card-desc">Limpio, delicado</p>
+                    <span class="item-price">₡1800</span>
+                </div>
+            </div>
         </section>
 
         <!-- 4. Matcha -->
-        <section class="menu-category">
-            <h2 class="category-title">Matcha</h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">Matcha Caliente</span>
+        <section class="category-section">
+            <div class="category-header">
+                <span class="category-icon">🍵</span>
+                <h2 class="category-title">Matcha</h2>
+            </div>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Matcha Caliente</h3>
+                    </div>
                     <span class="item-price">₡3300</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Matcha Frío</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Matcha Frío</h3>
+                    </div>
                     <span class="item-price">₡3300</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Matcha Fresa Frío</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Matcha Fresa Frío</h3>
+                    </div>
                     <span class="item-price">₡3700</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Mango Matcha Frío</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Mango Matcha Frío</h3>
+                    </div>
                     <span class="item-price">₡3700</span>
-                </li>
-            </ul>
+                </div>
+            </div>
         </section>
-        
+
         <!-- 5. Otras Bebidas -->
-        <section class="menu-category">
-            <h2 class="category-title">Otras Bebidas</h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">Jugo de Naranja</span>
+        <section class="category-section">
+            <div class="category-header">
+                <span class="category-icon">🍹</span>
+                <h2 class="category-title">Otras Bebidas</h2>
+            </div>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Jugo de Naranja</h3>
+                        <p class="item-desc">Natural</p>
+                    </div>
                     <span class="item-price">₡2000</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Piña Clásica</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Piña Clásica</h3>
+                    </div>
                     <span class="item-price">₡2000</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Sandía Clásica</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Sandía Clásica</h3>
+                    </div>
                     <span class="item-price">₡2000</span>
-                </li>
-                <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Proteína Espresso</span>
-                        <span class="item-desc">Shot espresso, leche, 15g proteína</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Proteína Espresso</h3>
+                        <p class="item-desc">Shot espresso, leche, 15g proteína</p>
                     </div>
                     <span class="item-price">₡3000</span>
-                </li>
-            </ul>
+                </div>
+            </div>
         </section>
 
         <!-- 6. Saladas -->
-        <section class="menu-category">
-            <h2 class="category-title">Comidas Saladas</h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">Tostadas de Aguacate</span>
+        <section class="category-section">
+            <div class="category-header">
+                <span class="category-icon">🥑</span>
+                <h2 class="category-title">Comidas Saladas</h2>
+            </div>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Tostadas de Aguacate</h3>
+                    </div>
                     <span class="item-price">₡3300</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Tacos de Pollo (3 und)</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Tacos de Pollo</h3>
+                        <p class="item-desc">3 unidades</p>
+                    </div>
                     <span class="item-price">₡3000</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Tacos de Carnitas (3 und)</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Tacos de Carnitas</h3>
+                        <p class="item-desc">3 unidades</p>
+                    </div>
                     <span class="item-price">₡3000</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Chilaquiles</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Chilaquiles</h3>
+                    </div>
                     <span class="item-price">₡3500</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Waffles del Jardín</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Waffles del Jardín</h3>
+                    </div>
                     <span class="item-price">₡3500</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">Derretido Clásico</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Derretido Clásico</h3>
+                    </div>
                     <span class="item-price">₡3500</span>
-                </li>
-                 <li class="menu-item">
-                    <span class="item-name">Derretido Guarumo</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Derretido Guarumo</h3>
+                    </div>
                     <span class="item-price">₡4000</span>
-                </li>
-            </ul>
+                </div>
+            </div>
         </section>
 
-         <!-- 7. Repostería -->
-         <section class="menu-category">
-            <h2 class="category-title">Repostería</h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">Cheesecake</span>
-                        <span class="item-desc">Frutos Rojos / Mango</span>
+        <!-- 7. Repostería -->
+        <section class="category-section">
+            <div class="category-header">
+                <span class="category-icon">🍰</span>
+                <h2 class="category-title">Repostería</h2>
+            </div>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Cheesecake</h3>
+                        <p class="item-desc">Frutos Rojos / Mango</p>
                     </div>
                     <span class="item-price">₡2400</span>
-                </li>
-                <li class="menu-item">
-                     <div class="item-details">
-                        <span class="item-name">Mousse</span>
-                        <span class="item-desc">Chocolate / Maracuyá</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 class="item-name">Mousse</h3>
+                        <p class="item-desc">Chocolate / Maracuyá</p>
                     </div>
                     <span class="item-price">₡2200</span>
-                </li>
-            </ul>
+                </div>
+            </div>
         </section>
 
     </main>
 
     <footer>
-        <p>&copy; 2026 Guarumo Cafetería. Todos los derechos reservados.</p>
-        <p style="font-size: 0.8em; margin-top: 0.5rem;">Diseñado con amor por la naturaleza.</p>
+        <p>&copy; 2026 Guarumo Cafetería</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8em; opacity: 0.6;">Designed by Arrecife Tech</p>
     </footer>
 
 </body>
+
 </html>
