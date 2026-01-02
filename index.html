@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú | Guarumo Cafetería</title>
+    <meta name="description" content="Menú oficial de Guarumo Cafetería. Cafés de especialidad, bebidas refrescantes y repostería artesanal en un ambiente natural.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Color System */
+            --color-primary: #2E5D38;        /* Deep Forest Green */
+            --color-primary-light: #5C8D66;  /* Primary Light */
+            --color-secondary: #8B5A2B;      /* Warm Wood Brown */
+            --color-bg: #FAF9F6;             /* Cream/Off-white */
+            --color-text: #1A3320;           /* Text Main */
+            --color-accent: #D4E157;         /* Accent */
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            
+            /* Spacing & Layout */
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(46, 93, 56, 0.05) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(139, 90, 43, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-primary);
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* --- Container --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* --- Menu Sections --- */
+        .menu-category {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--glass-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(46, 93, 56, 0.1);
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--color-primary-light);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .menu-items {
+            list-style: none;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed rgba(46, 93, 56, 0.2);
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--color-text);
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 0.2rem;
+            font-style: italic;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--color-primary);
+            white-space: nowrap;
+            margin-left: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .price-variant {
+            display: block;
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 4rem 1rem 2rem;
+            margin-top: 2rem;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            .menu-category {
+                padding: 1.5rem;
+            }
+            .category-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">Guarumo</h1>
+        <p class="tagline">Cafetería de Especialidad</p>
+    </header>
+
+    <main class="container">
+        
+        <!-- 1. Cafés Calientes -->
+        <section class="menu-category">
+            <h2 class="category-title">Cafés Calientes</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">Espresso</span>
+                    <span class="item-price">₡800</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Espresso Doble</span>
+                    <span class="item-price">₡1000</span>
+                </li>
+                <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Café Negro</span>
+                    </div>
+                    <div class="item-price">
+                        <span>Peq: ₡1100</span>
+                        <br>
+                        <span>Gde: ₡1400</span>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Cortado</span>
+                    <span class="item-price">₡1300</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Latte</span>
+                    <span class="item-price">₡1800</span>
+                </li>
+                <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Cappuccino</span>
+                    </div>
+                     <div class="item-price">
+                        <span>Peq: ₡1400</span>
+                        <br>
+                        <span>Gde: ₡2200</span>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Flat White</span>
+                    <span class="item-price">₡2000</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Moka</span>
+                    <span class="item-price">₡2300</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 2. Cafés Fríos -->
+        <section class="menu-category">
+            <h2 class="category-title">Cafés Fríos</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">Latte Frío Clásico</span>
+                    <span class="item-price">₡2300</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Latte Frío Caramelo</span>
+                    <span class="item-price">₡2500</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Moka Frío</span>
+                    <span class="item-price">₡2500</span>
+                </li>
+                <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Naranja Espresso</span>
+                        <span class="item-desc">Dos espressos, hielo y jugo de naranja natural</span>
+                    </div>
+                    <span class="item-price">₡2500</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 3. Filtrados (Métodos) -->
+        <section class="menu-category">
+            <h2 class="category-title">Filtrados</h2>
+            <ul class="menu-items">
+                <li style="margin-bottom: 1rem; color: var(--color-primary); font-weight: 600; text-align: right;">₡1800 c/u</li>
+                <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">V60</span>
+                        <span class="item-desc">Más aromático, brillante</span>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Vandola</span>
+                        <span class="item-desc">Redondo, dulce, suave</span>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Aero Press</span>
+                        <span class="item-desc">Dulce, achocolatado o intenso</span>
+                    </div>
+                </li>
+                 <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Origami</span>
+                        <span class="item-desc">Dulce, aromático, balanceado</span>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Moka Italiana</span>
+                        <span class="item-desc">Achocolatado, nueces</span>
+                    </div>
+                </li>
+                 <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Chemex</span>
+                        <span class="item-desc">Limpio, delicado</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 4. Matcha -->
+        <section class="menu-category">
+            <h2 class="category-title">Matcha</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">Matcha Caliente</span>
+                    <span class="item-price">₡3300</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Matcha Frío</span>
+                    <span class="item-price">₡3300</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Matcha Fresa Frío</span>
+                    <span class="item-price">₡3700</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Mango Matcha Frío</span>
+                    <span class="item-price">₡3700</span>
+                </li>
+            </ul>
+        </section>
+        
+        <!-- 5. Otras Bebidas -->
+        <section class="menu-category">
+            <h2 class="category-title">Otras Bebidas</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">Jugo de Naranja</span>
+                    <span class="item-price">₡2000</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Piña Clásica</span>
+                    <span class="item-price">₡2000</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Sandía Clásica</span>
+                    <span class="item-price">₡2000</span>
+                </li>
+                <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Proteína Espresso</span>
+                        <span class="item-desc">Shot espresso, leche, 15g proteína</span>
+                    </div>
+                    <span class="item-price">₡3000</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 6. Saladas -->
+        <section class="menu-category">
+            <h2 class="category-title">Comidas Saladas</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">Tostadas de Aguacate</span>
+                    <span class="item-price">₡3300</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Tacos de Pollo (3 und)</span>
+                    <span class="item-price">₡3000</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Tacos de Carnitas (3 und)</span>
+                    <span class="item-price">₡3000</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Chilaquiles</span>
+                    <span class="item-price">₡3500</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Waffles del Jardín</span>
+                    <span class="item-price">₡3500</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">Derretido Clásico</span>
+                    <span class="item-price">₡3500</span>
+                </li>
+                 <li class="menu-item">
+                    <span class="item-name">Derretido Guarumo</span>
+                    <span class="item-price">₡4000</span>
+                </li>
+            </ul>
+        </section>
+
+         <!-- 7. Repostería -->
+         <section class="menu-category">
+            <h2 class="category-title">Repostería</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <div class="item-details">
+                        <span class="item-name">Cheesecake</span>
+                        <span class="item-desc">Frutos Rojos / Mango</span>
+                    </div>
+                    <span class="item-price">₡2400</span>
+                </li>
+                <li class="menu-item">
+                     <div class="item-details">
+                        <span class="item-name">Mousse</span>
+                        <span class="item-desc">Chocolate / Maracuyá</span>
+                    </div>
+                    <span class="item-price">₡2200</span>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Guarumo Cafetería. Todos los derechos reservados.</p>
+        <p style="font-size: 0.8em; margin-top: 0.5rem;">Diseñado con amor por la naturaleza.</p>
+    </footer>
+
+</body>
+</html>
